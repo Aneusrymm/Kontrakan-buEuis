@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Kontrakan Ibu Euis</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
+  <style>
+    /* Custom styles for animations and specific elements */
+    .fade-in {
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .fade-in.visible {
+      opacity: 1;
+    }
+    .slider {
+      display: flex;
+      overflow-x: auto;
+      scroll-behavior: smooth;
+      -webkit-overflow-scrolling: touch;
+      /* Hide scrollbar for a cleaner look */
+      scrollbar-width: none; /* Firefox */
+      -ms-overflow-style: none;  /* IE and Edge */
+    }
+    .slider::-webkit-scrollbar {
+      display: none; /* Chrome, Safari, Opera */
+    }
+    .slider img {
+      min-width: 100%;
+      height: 300px; /* Fixed height for consistency */
+      object-fit: cover;
+      flex-shrink: 0;
+      border-radius: 8px; /* Rounded corners for slider images */
+    }
+    .modal {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background-color: rgba(0, 0, 0, 0.8);
+      z-index: 50;
+      justify-content: center;
+      align-items: center;
+    }
+    .modal-content {
+      background: white;
+      padding: 20px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 600px;
+      text-align: center;
+      position: relative;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
+      animation: fadeInScale 0.3s ease-out;
+    }
+    .close {
+      position: absolute;
+      top: 10px;
+      right: 20px;
+      font-size: 28px;
+      cursor: pointer;
+      color: #333;
+      transition: color 0.2s;
+    }
+    .close:hover {
+      color: #ef4444; /* Red color on hover */
+    }
+    .slider-hero {
+      width: 100%;
+      height: 100%;
+      overflow: hidden;
+      position: relative;
+    }
+    .slider-image {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      position: absolute;
+      top: 0;
+      left: 0;
+      opacity: 0;
+      transition: opacity 0.5s ease-in-out;
+    }
+    .slider-image.active {
+      opacity: 1;
+    }
+    /* Navigation buttons for the image slider */
+    .slider-nav-button {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background-color: rgba(0, 0, 0, 0.5);
+      color: white;
+      border: none;
+      padding: 10px 15px;
+      cursor: pointer;
+      font-size: 1.5rem;
+      border-radius: 50%;
+      z-index: 10;
+      transition: background-color 0.3s;
+    }
+    .slider-nav-button:hover {
+      background-color: rgba(0, 0, 0, 0.7);
+    }
+    .slider-nav-button.left {
+      left: 10px;
+    }
+    .slider-nav-button.right {
+      right: 10px;
+    }
+
+    @keyframes fadeInScale {
+      from { opacity: 0; transform: translate(-50%, -50%) scale(0.9); }
+      to { opacity: 1; transform: translate(-50%, -50%) scale(1); }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-br from-gray-50 to-gray-200 font-sans text-gray-800">
+  <!-- Header -->
+  <header class="bg-gradient-to-r from-blue-700 to-blue-900 text-white sticky top-0 shadow-lg z-10">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-4">
+      <div class="text-3xl font-bold tracking-wide"></div>
+      <ul class="flex space-x-4 md:space-x-8">
+        <li><a href="#home" class="hover:text-blue-300 transition">Home</a></li>
+        <li><a href="#about" class="hover:text-blue-300 transition">About</a></li>
+        <li><a href="#rooms" class="hover:text-blue-300 transition">Rooms</a></li>
+        <li><a href="#location" class="hover:text-blue-300 transition">Location</a></li>
+        <li><a href="#contact" class="hover:text-blue-300 transition">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+    <div class="slider-hero w-full h-full absolute top-0 left-0">
+      <!-- Placeholder images for hero section -->
+      <img src="1.jpg" alt="Hero Image 1" class="slider-image active" onerror="this.src='https://placehold.co/1200x800/007bff/ffffff?text=Image+Load+Error'">
+      <img src="rumah.jpg" alt="Hero Image 2" class="slider-image" onerror="this.src='https://placehold.co/1200x800/0056b3/ffffff?text=Image+Load+Error'">
+      <img src="rumahdepan.jpg" alt="Hero Image 3" class="slider-image" onerror="this.src='https://placehold.co/1200x800/003f7f/ffffff?text=Image+Load+Error'">
+    </div>
+    <div class="container mx-auto text-center text-white px-6 py-12 relative z-10">
+      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate-pulse">Welcome</h1>
+      <p class="text-2xl mb-6">Your Perfect Rental Home</p>
+      <button class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:bg-blue-100 transition-transform transform hover:scale-105" onclick="document.getElementById('rooms').scrollIntoView({ behavior: 'smooth' })">Cari Tahu!</button>
+    </div>
+  </section>
+
+  <!-- About Section -->
+  <section id="about" class="py-20 bg-white">
+    <div class="container mx-auto text-center px-4">
+      <h2 class="text-4xl font-extrabold mb-8 text-blue-900">About Us</h2>
+      <p class="text-gray-700 max-w-3xl mx-auto mb-10 leading-relaxed">Experience the ultimate in comfortable and affordable living with Kontrakan Ibu Euis. Our modern properties are thoughtfully designed to offer a cozy and stylish home environment with all the amenities you need.</p>
+      <div id="gallery" class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
+        <!-- Placeholder images for About section gallery -->
+        <img src="https://placehold.co/600x400/87CEEB/ffffff?text=Room+Interior" alt="Room Interior" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow" onerror="this.src='https://placehold.co/600x400/87CEEB/ffffff?text=Image+Load+Error'">
+        <img src="https://placehold.co/600x400/6495ED/ffffff?text=Bathroom" alt="Bathroom" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow" onerror="this.src='https://placehold.co/600x400/6495ED/ffffff?text=Image+Load+Error'">
+        <img src="https://placehold.co/600x400/4169E1/ffffff?text=House+Exterior" alt="House Exterior" class="w-full h-64 object-cover rounded-xl shadow-lg hover:shadow-xl transition-shadow" onerror="this.src='https://placehold.co/600x400/4169E1/ffffff?text=Image+Load+Error'">
+      </div>
+    </div>
+  </section>
+
+  <!-- Rooms Section -->
+  <section id="rooms" class="py-20 bg-gradient-to-br from-blue-100 to-gray-100">
+    <div class="container mx-auto text-center px-4">
+      <h2 class="text-4xl font-extrabold mb-8 text-blue-900">Tipe Kontrakan</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8 px-6">
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" onclick="openRoomModal('type1')">
+            <h3 class="text-2xl font-bold mb-2 text-blue-700">Tipe 1</h3>
+          <p class="text-gray-600 mb-4">Price: Rp16,000,000/Tahun</p>
+          <p class="text-gray-600">Tersedia: 2 Rumah</p>
+          <p class="text-red-600">Sisa 1 Rumah !</p>
+
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" onclick="openRoomModal('type2')">
+          <h3 class="text-2xl font-bold mb-2 text-blue-700">Tipe 2</h3>
+          <p class="text-gray-600 mb-4">Price: Rp1,200,000/Bulan</p>
+          <p class="text-gray-600">Tersedia: 2 Rumah</p>
+           <p class="text-red-600">Penuh!!</p>
+        </div>
+        <div class="bg-white p-6 rounded-xl shadow-lg hover:shadow-xl transition-shadow cursor-pointer" onclick="openRoomModal('type3')">
+        
+                 <h3 class="text-2xl font-bold mb-2 text-blue-700">Tipe 3</h3>
+          <p class="text-gray-600 mb-4">Price: Rp650,000/Bulan</p>
+          <p class="text-gray-600">Tersedia: 4 Rumah</p>
+          <p class="text-red-600">Penuh!!</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Location Section -->
+  <section id="location" class="py-20 bg-white">
+    <div class="container mx-auto text-center px-4">
+      <h2 class="text-4xl font-extrabold mb-8 text-blue-900">Lokasi</h2>
+      <p class="text-gray-700 max-w-2xl mx-auto mb-6">Sindang Barang Pilar 1 RT 01/06 , Kota Bogot Jawabarat , Indonesia</p>
+      <div class="w-full h-96 mt-6 rounded-xl overflow-hidden shadow-lg">
+        <iframe   src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3966.6740014646235!2d106.7582176!3d-6.576858!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x2e69c5a9b1b38b93%3A0x3ef28d17e8d0f6f5!2sWaroeng%20Blenger!5e0!3m2!1sen!2sid!4v1719850000000!5m2!1sen!2sid" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+      </div>
+    </div>
+  </section>
+
+  <!-- Contact Section -->
+  <section id="contact" class="py-20 bg-gradient-to-br from-blue-100 to-gray-100">
+    <div class="container mx-auto text-center px-4">
+      <h2 class="text-4xl font-extrabold mb-8 text-blue-900">Contact Us</h2>
+      <p class="text-gray-600 mb-6">Get in touch with us today for more details!</p>
+      <button class="bg-blue-700 text-white px-8 py-4 rounded-full font-semibold hover:bg-blue-800 transition-transform transform hover:scale-105" onclick="openContactModal()">Get in Touch</button>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="bg-blue-900 text-white text-center py-6">
+    <p class="text-lg">© 2025 Kontrakan Ibu Euis. All rights reserved.</p>
+  </footer>
+
+  <!-- Room Details Modal -->
+  <div id="roomModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeRoomModal()">×</span>
+      <h3 id="modalTitle" class="text-2xl font-bold mb-4 text-blue-700"></h3>
+      <p id="modalPrice" class="text-gray-600 mb-2"></p>
+      <p id="modalAvailability" class="text-gray-600 mb-6"></p>
+      <div class="relative">
+        <div class="slider" id="roomSlider"></div>
+        <button class="slider-nav-button left" onclick="scrollSlider('roomSlider', -1)">&#10094;</button>
+        <button class="slider-nav-button right" onclick="scrollSlider('roomSlider', 1)">&#10095;</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Contact Info Modal -->
+  <div id="contactModal" class="modal">
+    <div class="modal-content">
+      <span class="close" onclick="closeContactModal()">×</span>
+      <h3 class="text-2xl font-bold mb-4 text-blue-700">Contact Information</h3>
+      <p class="text-gray-700 mb-2">Email: <a href="mailto:ibueuis@example.com" class="text-blue-600 hover:underline">ibueuis@example.com</a></p>
+      <p class="text-gray-700 mb-4">Call: <a href="tel:+6281234567890" class="text-blue-600 hover:underline">+62 812-3456-7890</a></p>
+      <p class="text-sm text-gray-500">Reach out to us for any inquiries!</p>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      // Fade-in animation for elements on scroll
+      const elements = document.querySelectorAll('.fade-in');
+      const observer = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add('visible');
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.1 });
+
+      elements.forEach(element => {
+        observer.observe(element);
+      });
+
+      // GSAP animation for hero title
+      gsap.from(".animate-pulse", { opacity: 0, y: 50, duration: 1, ease: "power2.out" });
+
+      // Hero Section Slideshow
+      const heroImages = document.querySelectorAll('.slider-hero .slider-image');
+      let currentHeroIndex = 0;
+
+      function showNextHeroImage() {
+        heroImages[currentHeroIndex].classList.remove('active');
+        currentHeroIndex = (currentHeroIndex + 1) % heroImages.length;
+        heroImages[currentHeroIndex].classList.add('active');
+      }
+
+      // Initialize the first hero image
+      if (heroImages.length > 0) {
+        heroImages[currentHeroIndex].classList.add('active');
+      }
+
+      // Change hero image every 5 seconds
+      setInterval(showNextHeroImage, 5000);
+
+      // Room Details Modal functionality
+      function openRoomModal(type) {
+        const modal = document.getElementById('roomModal');
+        const modalTitle = document.getElementById('modalTitle');
+        const modalPrice = document.getElementById('modalPrice');
+        const modalAvailability = document.getElementById('modalAvailability');
+        const roomSlider = document.getElementById('roomSlider');
+
+        let title, price, availability, images;
+        // Placeholder images for room types
+        const placeholderBase = 'https://placehold.co/600x400/';
+        const errorFallback = 'onerror="this.src=\'https://placehold.co/600x400/cccccc/333333?text=Image+Load+Error\'"';
+
+        switch(type) {
+          case 'type1':
+            title = 'Type 1';
+            price = 'Price: Rp650,000/month';
+            availability = 'Available: 4 rooms';
+            images = [
+              `${placeholderBase}rumah.jpg`,
+              `${placeholderBase}FFC1DD/333333?text=Type+1+Room+2`,
+              `${placeholderBase}C1DFFF/333333?text=Type+1+Room+3`
+            ];
+            break;
+          case 'type2':
+            title = 'Type 2';
+            price = 'Price: Rp12,000,000/year';
+            availability = 'Available: 2 rooms';
+            images = [
+              `${placeholderBase}DDC1FF/333333?text=Type+2+Room+1`,
+              `${placeholderBase}C1FFDD/333333?text=Type+2+Room+2`,
+              `${placeholderBase}FFDDC1/333333?text=Type+2+Room+3`
+            ];
+            break;
+          case 'type3':
+            title = 'Type 3';
+            price = 'Price: Rp1,200,000/month';
+            availability = 'Available: 2 rooms';
+            images = [
+              `${placeholderBase}C1DDFF/333333?text=Type+3+Room+1`,
+              `${placeholderBase}DDC1FF/333333?text=Type+3+Room+2`,
+              `${placeholderBase}FFC1DD/333333?text=Type+3+Room+3`
+            ];
+            break;
+        }
+
+        modalTitle.textContent = title;
+        modalPrice.textContent = price;
+        modalAvailability.textContent = availability;
+        roomSlider.innerHTML = images.map(img => `<img src="${img}" alt="${title} Image" ${errorFallback}>`).join('');
+
+        modal.style.display = 'flex'; // Use flex to center the modal content
+      }
+
+      function closeRoomModal() {
+        document.getElementById('roomModal').style.display = 'none';
+      }
+
+      // Contact Info Modal functionality
+      function openContactModal() {
+        document.getElementById('contactModal').style.display = 'flex'; // Use flex to center
+      }
+
+      function closeContactModal() {
+        document.getElementById('contactModal').style.display = 'none';
+      }
+
+      // Close modals when clicking outside
+      window.onclick = function(event) {
+        const roomModal = document.getElementById('roomModal');
+        const contactModal = document.getElementById('contactModal');
+        if (event.target == roomModal) {
+          closeRoomModal();
+        }
+        if (event.target == contactModal) {
+          closeContactModal();
+        }
+      };
+
+      // Slider navigation for room details modal
+      function scrollSlider(sliderId, direction) {
+        const slider = document.getElementById(sliderId);
+        const scrollAmount = slider.clientWidth; // Scroll by the width of one image
+        slider.scrollBy({
+          left: direction * scrollAmount,
+          behavior: 'smooth'
+        });
+      }
+
+      // Expose functions to global scope for onclick attributes
+      window.openRoomModal = openRoomModal;
+      window.closeRoomModal = closeRoomModal;
+      window.openContactModal = openContactModal;
+      window.closeContactModal = closeContactModal;
+      window.scrollSlider = scrollSlider;
+    });
+  </script>
+</body>
+</html>
