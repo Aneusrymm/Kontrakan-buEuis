@@ -51,32 +51,34 @@
         switch(type) {
           case 'type1':
             title = 'Type 1';
-            price = 'Price: Rp650,000/month';
-            availability = 'Available: 4 rooms';
+            price = 'Price: Rp16,000,000/year';
+            availability = 'Tersedia 2 Rumah';
             images = [
-              `${placeholderBase}rumah.jpg`,
-              `${placeholderBase}FFC1DD/333333?text=Type+1+Room+2`,
-              `${placeholderBase}C1DFFF/333333?text=Type+1+Room+3`
+              'asset/img/1.jpg',
+              'asset/img/2.jpg',
+              'asset/img/3.jpg',
+              'asset/img/4.jpg',
+              'asset/img/6.jpg',
             ];
             break;
           case 'type2':
             title = 'Type 2';
-            price = 'Price: Rp12,000,000/year';
-            availability = 'Available: 2 rooms';
+            price = 'Price: Rp1.200,000/year';
+            availability = 'Tersedia 2 Rumah';
             images = [
-              `${placeholderBase}DDC1FF/333333?text=Type+2+Room+1`,
-              `${placeholderBase}C1FFDD/333333?text=Type+2+Room+2`,
-              `${placeholderBase}FFDDC1/333333?text=Type+2+Room+3`
+              `asset/img/rumahdepan.jpg`,
+              `${placeholderBase}DDC1FF/333333?text=Gambar+akan+Segera+hadir`,
+              `${placeholderBase}DDC1FF/333333?text=Gambar+akan+Segera+hadir`
             ];
             break;
           case 'type3':
             title = 'Type 3';
-            price = 'Price: Rp1,200,000/month';
-            availability = 'Available: 2 rooms';
+            price = 'Price: Rp650,000,000/month';
+            availability = 'Tersedia 4 Rumah';
             images = [
-              `${placeholderBase}C1DDFF/333333?text=Type+3+Room+1`,
-              `${placeholderBase}DDC1FF/333333?text=Type+3+Room+2`,
-              `${placeholderBase}FFC1DD/333333?text=Type+3+Room+3`
+              `asset/img/rumahbelakang.jpg`,
+              `${placeholderBase}DDC1FF/333333?text=Gambar+akan+Segera+Hadir`,
+              `${placeholderBase}FFC1DD/333333?text=Gambar+akan+Segera+Hadir`
             ];
             break;
         }

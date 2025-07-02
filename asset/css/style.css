@@ -36,6 +36,16 @@
       justify-content: center;
       align-items: center;
     }
+    
+    #roomSlider img {
+  max-height: 400px;
+  width: auto;
+  object-fit: contain;
+  display: block;
+  margin: 0 auto 10px;
+  
+}
+
     .modal-content {
       background: white;
       padding: 20px;
@@ -45,7 +55,7 @@
       text-align: center;
       position: relative;
       box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5);
-      animation: fadeInScale 0.3s ease-out;
+  
     }
     .close {
       position: absolute;
