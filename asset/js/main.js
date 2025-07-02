@@ -76,8 +76,8 @@
             price = 'Price: Rp650,000,000/month';
             availability = 'Tersedia 4 Rumah';
             images = [
+                `asset/img/belakang1.jpg`,
               `asset/img/rumahbelakang.jpg`,
-              `${placeholderBase}DDC1FF/333333?text=Gambar+akan+Segera+Hadir`,
               `${placeholderBase}FFC1DD/333333?text=Gambar+akan+Segera+Hadir`
             ];
             break;
