@@ -132,4 +132,38 @@
       window.openContactModal = openContactModal;
       window.closeContactModal = closeContactModal;
       window.scrollSlider = scrollSlider;
+
+      // Hamburger Menu Toggle
+const hamburger = document.querySelector('.hamburger');
+const navMenu = document.querySelector('.nav-menu');
+
+hamburger.addEventListener('click', () => {
+  navMenu.classList.toggle('active');
+});
+
+// Tutup menu saat item menu diklik
+const navLinks = document.querySelectorAll('.nav-menu a');
+navLinks.forEach(link => {
+  link.addEventListener('click', () => {
+    navMenu.classList.remove('active');
+  });
+});
+
+// Hero Slider
+let currentSlide = 0;
+const slides = document.querySelectorAll('.slider-image');
+function showSlide(index) {
+  slides.forEach((slide, i) => {
+    slide.classList.toggle('active', i === index);
+  });
+}
+function nextSlide() {
+  currentSlide = (currentSlide + 1) % slides.length;
+  showSlide(currentSlide);
+}
+setInterval(nextSlide, 5000); // Ganti slide setiap 5 detik
+
+// Sisanya dari main.js (misalnya, untuk modal atau slider lain) tetap sama
     });
+
+    

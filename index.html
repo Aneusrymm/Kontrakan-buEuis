@@ -18,18 +18,22 @@
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://cdn.jsdelivr.net/npm/gsap@3.12.2/dist/gsap.min.js"></script>
 </head>
-<body class="bg-gradient-to-br from-gray-50 to-gray-200 font-sans text-gray-800">
+<body class="bg-white-to-br from-gray-50 to-gray-200 font-sans text-gray-800">
   <!-- Header -->
-  <header class="bg-gradient-to-r from-blue-700 to-blue-900 text-white sticky top-0 shadow-lg z-10">
-   <nav class="container mx-auto flex justify-between items-center py-4 px-4">
-  <div class="flex items-center space-x-2">
-    <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-white" viewBox="0 0 24 24">
-      <path d="M12 3l10 9h-3v9h-6v-6H11v6H5v-9H2z"/>
-    </svg>
-    <span class="text-2xl font-bold tracking-wide">Kontrakan Ibu Euis</span>
-  </div>
-
-      <ul class="flex space-x-4 md:space-x-8">
+<header class="bg-gradient-to-r from-blue-700 to-blue-900 text-white sticky top-0 shadow-lg z-10">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-4">
+      <div class="flex items-center space-x-2">
+        <svg xmlns="http://www.w3.org/2000/svg" class="w-8 h-8 fill-white" viewBox="0 0 24 24">
+          <path d="M12 3l10 9h-3v9h-6v-6H11v6H5v-9H2z"/>
+        </svg>
+        <span class="text-2xl font-bold tracking-wide">Kontrakan Ibu Euis</span>
+      </div>
+      <button class="md:hidden hamburger" aria-label="Toggle Menu">
+        <svg class="w-8 h-8 fill-white" viewBox="0 0 24 24">
+          <path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/>
+        </svg>
+      </button>
+      <ul class="nav-menu hidden md:flex md:space-x-8">
         <li><a href="#home" class="hover:text-blue-300 transition">Beranda</a></li>
         <li><a href="#about" class="hover:text-blue-300 transition">Tentang</a></li>
         <li><a href="#rooms" class="hover:text-blue-300 transition">Rumah</a></li>
@@ -40,17 +44,17 @@
   </header>
 
   <!-- Hero Section -->
-  <section id="home" class="min-h-screen flex items-center relative overflow-hidden">
+  <section id="home" class="relative flex items-center justify-center h-[60vh] md:h-screen overflow-hidden">
     <div class="slider-hero w-full h-full absolute top-0 left-0">
-      <!-- Placeholder images for hero section -->
       <img src="asset/img/1.jpg" alt="Hero Image 1" class="slider-image active" onerror="this.src='https://placehold.co/1200x800/007bff/ffffff?text=Image+Load+Error'">
       <img src="asset/img/rumah.jpg" alt="Hero Image 2" class="slider-image" onerror="this.src='https://placehold.co/1200x800/0056b3/ffffff?text=Image+Load+Error'">
       <img src="asset/img/rumahdepan.jpg" alt="Hero Image 3" class="slider-image" onerror="this.src='https://placehold.co/1200x800/003f7f/ffffff?text=Image+Load+Error'">
+       <img src="asset/img/sawahatas.jpg" alt="Hero Image 3" class="slider-image" onerror="this.src='https://placehold.co/1200x800/003f7f/ffffff?text=Image+Load+Error'">
     </div>
     <div class="container mx-auto text-center text-white px-6 py-12 relative z-10">
-      <h1 class="text-5xl md:text-6xl font-extrabold mb-4 animate-pulse">Welcome</h1>
-      <p class="text-2xl mb-6">Your Perfect Rental Home</p>
-      <button class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:bg-blue-100 transition-transform transform hover:scale-105" onclick="document.getElementById('rooms').scrollIntoView({ behavior: 'smooth' })">Cari Tahu!</button>
+      <h1 class="text-4xl md:text-6xl font-extrabold mb-4 animate-pulse">Welcome</h1>
+      <p class="text-xl md:text-2xl mb-6">Your Perfect Rental Home</p>
+      <button class="bg-white text-blue-700 px-8 py-4 rounded-full font-semibold hover:bg-blue-100 transition-transform transform hover:scale-105" onclick="document.getElementById('about').scrollIntoView({ behavior: 'smooth' })">Cari Tahu!</button>
     </div>
   </section>
 
