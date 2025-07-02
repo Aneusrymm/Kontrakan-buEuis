@@ -51,7 +51,7 @@
         switch(type) {
           case 'type1':
             title = 'Type 1';
-            price = 'Price: Rp16,000,000/year';
+            price = 'Price: Rp16,000,000/tahun';
             availability = 'Tersedia 2 Rumah';
             images = [
               'asset/img/1.jpg',
@@ -63,7 +63,7 @@
             break;
           case 'type2':
             title = 'Type 2';
-            price = 'Price: Rp1.200,000/year';
+            price = 'Price: Rp1.200,000/bulan';
             availability = 'Tersedia 2 Rumah';
             images = [
               `asset/img/rumahdepan.jpg`,
@@ -73,7 +73,7 @@
             break;
           case 'type3':
             title = 'Type 3';
-            price = 'Price: Rp650,000,000/month';
+            price = 'Price: Rp650,000,000/bulan';
             availability = 'Tersedia 4 Rumah';
             images = [
                 `asset/img/belakang1.jpg`,
