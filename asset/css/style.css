@@ -9,7 +9,7 @@
 .slider-image {
   width: 100%;
   height: 100%;
-  object-fit: contain; /* Ganti dari cover ke contain agar gambar tidak terpotong */
+  object-fit: contain; 
   position: absolute;
   top: 0;
   left: 0;
@@ -23,7 +23,7 @@
 
 #home {
   position: relative;
-  background: rgba(0, 0, 0, 0.5); /* Overlay untuk meningkatkan keterbacaan teks */
+  background: rgba(0, 0, 0, 0.5); 
 }
 
 /* Navbar */
@@ -47,7 +47,7 @@
     top: 100%;
     left: 0;
     right: 0;
-    background: #1e3a8a; /* Sesuaikan dengan warna header */
+    background: #1e3a8a; 
     flex-direction: column;
     padding: 1rem;
     text-align: center;
@@ -63,16 +63,16 @@
 
   /* Hero Section untuk Mobile */
   #home {
-    height: 60vh; /* Kurangi tinggi untuk mobile */
+    height: 60vh; 
   }
 
   .slider-image {
-    object-fit: cover; /* Kembali ke cover untuk mobile, tapi dengan ukuran terkendali */
+    object-fit: cover; 
     object-position: center;
   }
 
   .container h1 {
-    font-size: 2.5rem; /* Kurangi ukuran teks untuk mobile */
+    font-size: 2.5rem; 
   }
 
   .container p {
@@ -80,7 +80,7 @@
   }
 }
 
-/* Sisanya dari CSS asli tetap sama */
+
 .fade-in {
   opacity: 0;
   transition: opacity 0.5s ease-in-out;

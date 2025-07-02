@@ -14,10 +14,10 @@
         observer.observe(element);
       });
 
-      // GSAP animation for hero title
+
       gsap.from(".animate-pulse", { opacity: 0, y: 50, duration: 1, ease: "power2.out" });
 
-      // Hero Section Slideshow
+
       const heroImages = document.querySelectorAll('.slider-hero .slider-image');
       let currentHeroIndex = 0;
 
@@ -32,10 +32,9 @@
         heroImages[currentHeroIndex].classList.add('active');
       }
 
-      // Change hero image every 5 seconds
+   
       setInterval(showNextHeroImage, 5000);
 
-      // Room Details Modal functionality
       function openRoomModal(type) {
         const modal = document.getElementById('roomModal');
         const modalTitle = document.getElementById('modalTitle');
@@ -44,7 +43,7 @@
         const roomSlider = document.getElementById('roomSlider');
 
         let title, price, availability, images;
-        // Placeholder images for room types
+
         const placeholderBase = 'https://placehold.co/600x400/';
         const errorFallback = 'onerror="this.src=\'https://placehold.co/600x400/cccccc/333333?text=Image+Load+Error\'"';
 
@@ -88,7 +87,7 @@
         modalAvailability.textContent = availability;
         roomSlider.innerHTML = images.map(img => `<img src="${img}" alt="${title} Image" ${errorFallback}>`).join('');
 
-        modal.style.display = 'flex'; // Use flex to center the modal content
+        modal.style.display = 'flex'; 
       }
 
       function closeRoomModal() {
@@ -97,7 +96,7 @@
 
       // Contact Info Modal functionality
       function openContactModal() {
-        document.getElementById('contactModal').style.display = 'flex'; // Use flex to center
+        document.getElementById('contactModal').style.display = 'flex'; 
       }
 
       function closeContactModal() {
@@ -116,24 +115,22 @@
         }
       };
 
-      // Slider navigation for room details modal
       function scrollSlider(sliderId, direction) {
         const slider = document.getElementById(sliderId);
-        const scrollAmount = slider.clientWidth; // Scroll by the width of one image
+        const scrollAmount = slider.clientWidth;
         slider.scrollBy({
           left: direction * scrollAmount,
           behavior: 'smooth'
         });
       }
 
-      // Expose functions to global scope for onclick attributes
+
       window.openRoomModal = openRoomModal;
       window.closeRoomModal = closeRoomModal;
       window.openContactModal = openContactModal;
       window.closeContactModal = closeContactModal;
       window.scrollSlider = scrollSlider;
 
-      // Hamburger Menu Toggle
 const hamburger = document.querySelector('.hamburger');
 const navMenu = document.querySelector('.nav-menu');
 
@@ -141,7 +138,7 @@ hamburger.addEventListener('click', () => {
   navMenu.classList.toggle('active');
 });
 
-// Tutup menu saat item menu diklik
+
 const navLinks = document.querySelectorAll('.nav-menu a');
 navLinks.forEach(link => {
   link.addEventListener('click', () => {
@@ -149,7 +146,6 @@ navLinks.forEach(link => {
   });
 });
 
-// Hero Slider
 let currentSlide = 0;
 const slides = document.querySelectorAll('.slider-image');
 function showSlide(index) {
@@ -161,9 +157,7 @@ function nextSlide() {
   currentSlide = (currentSlide + 1) % slides.length;
   showSlide(currentSlide);
 }
-setInterval(nextSlide, 5000); // Ganti slide setiap 5 detik
-
-// Sisanya dari main.js (misalnya, untuk modal atau slider lain) tetap sama
+setInterval(nextSlide, 5000); 
     });
 
     
